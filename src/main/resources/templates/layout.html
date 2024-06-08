@@ -34,11 +34,21 @@
                 <li class="nav-item">
                     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Seguridad
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" th:href="@{/auth/cambiar-password}">Cambiar Password</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <form th:action="@{/logout}" method="post" class="d-flex" role="search">
+                                <button class="dropdown-item" type="submit">Cerrar Sesión</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
             </ul>
-            <span class="navbar-text" th:text="${session.nomusuario}"></span>&nbsp;
-            <form th:action="@{/logout}" method="post" class="d-flex" role="search">
-                <button class="btn btn-outline-success" type="submit">Cerrar Sesión</button>
-            </form>
         </div>
     </div>
 </nav>

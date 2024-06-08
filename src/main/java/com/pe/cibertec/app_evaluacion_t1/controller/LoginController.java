@@ -2,8 +2,10 @@ package com.pe.cibertec.app_evaluacion_t1.controller;
 
 import com.pe.cibertec.app_evaluacion_t1.model.bd.Usuario;
 import com.pe.cibertec.app_evaluacion_t1.service.UsuarioService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +24,10 @@ public class LoginController {
     }
 
     @GetMapping("/login-success")
-    public String loginSuccess(){
+    public String loginSuccess(HttpServletRequest request) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String nombreUsuario = auth.getName();
+        request.getSession().setAttribute("nomusuario", nombreUsuario);
         return "redirect:/auth/dashboard";
     }
 
