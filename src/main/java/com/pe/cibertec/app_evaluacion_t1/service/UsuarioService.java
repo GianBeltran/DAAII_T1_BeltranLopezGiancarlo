@@ -19,7 +19,6 @@ public class UsuarioService implements IUsuarioService{
 
     private UsuarioRepository usuarioRepository;
     private RolRepository rolRepository;
-    private RandomPassword randomPassword;
 
     @Override
     public List<Usuario> listarUsuario() {

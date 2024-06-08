@@ -31,26 +31,25 @@ public class LoginController {
         return "redirect:/auth/dashboard";
     }
 
-    //
-    @PostMapping("/guardar-usuario")
+    @PostMapping("/guardarUsuario")
     public String guardarUsuario(@ModelAttribute Usuario usuario){
         usuarioService.guardarUsuario(usuario);
         return "/auth/frmlogin";
     }
 
-    @GetMapping("/register")
-    public String register(Model modelo){
+    @GetMapping("/registro")
+    public String registro(Model modelo){
         Usuario usuario = new Usuario();
         modelo.addAttribute("usuario", usuario);
         return "auth/frmregistro";
     }
 
-    @GetMapping("/cambiar-password")
+    @GetMapping("/cambiarPassword")
     public String mostrarCambiarPassword(Model model) {
-        return "auth/frmpassword.html";
+        return "auth/frmpassword";
     }
 
-    @PostMapping("/cambiar-password")
+    @PostMapping("/cambiarPassword")
     public String cambiarPassword(@RequestParam("newPassword") String nuevaPassword, Authentication authentication, RedirectAttributes redirectAttributes) {
         String nomusuario = authentication.getName();
         try {
@@ -59,9 +58,8 @@ public class LoginController {
         } catch (IllegalArgumentException e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
-        return "redirect:/auth/cambiar-password";
+        return "redirect:/auth/cambiarPassword";
     }
-        //
 
     @GetMapping("/dashboard")
     public String dashboard(){
