@@ -47,7 +47,7 @@ public class LoginController {
 
     @GetMapping("/cambiar-password")
     public String mostrarCambiarPassword(Model model) {
-        return "auth/frmpassword";
+        return "auth/frmpassword.html";
     }
 
     @PostMapping("/cambiar-password")
